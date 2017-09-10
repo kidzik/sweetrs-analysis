@@ -38,7 +38,7 @@ for (i in 1:10){
   for (r in lambdas){
     model = softImpute(ratings.train$train,rank.max = 5,lambda = r)
     completed = softImpute::complete(ratings.train$train, model)
-    res = c(res,RMSE(completed,ratings.train$test))
+    res = c(res,NMSE(completed,ratings.train$test))
     res.d = c(res.d,sum(model$d> 0.01))
   }
   res.all = rbind(res.all, res)
